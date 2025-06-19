@@ -1,0 +1,53 @@
+.grooming-page {
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #fafafa;
+  }
+  
+  .grooming-header, .importance-section, .services-section, .packages-section, .tips-section, .book-section {
+    margin-bottom: 2rem;
+  }
+  
+  .grooming-header h1 {
+    color: #ff7f50;
+    font-size: 2.5rem;
+  }
+  
+  .services-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .services-list li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .packages-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .package-card {
+    flex: 1 1 250px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-now-btn {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .book-now-btn:hover {
+    background-color: #ff5a1f;
+  }
+  

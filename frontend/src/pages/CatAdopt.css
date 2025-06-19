@@ -1,0 +1,171 @@
+/* CatAdopt.css */
+
+.cat-adopt {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  .hero-section {
+    background: url('/public/images/slide1.jpg') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .hero-button {
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .hero-button:hover {
+    background: #ff4c4c;
+  }
+  
+  .meet-cats {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .cat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  
+  .cat-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .cat-card h3 {
+    margin: 15px 0 10px;
+  }
+  
+  .cat-card p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+  }
+  
+  .adopt-button {
+    margin-top: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .adopt-button:hover {
+    background: #45a049;
+  }
+  
+  .adoption-steps {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .step {
+    font-size: 1.2rem;
+    background: #e0f7fa;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .happy-stories {
+    padding: 60px 20px;
+    background: #f0f0f0;
+    text-align: center;
+  }
+  
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .story-card img {
+    width: 100%;
+    border-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .story-card p {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  .ready-adopt {
+    padding: 60px 20px;
+    text-align: center;
+    background: #ffe0e0;
+  }
+  
+  .start-button {
+    background: #e91e63;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .start-button:hover {
+    background: #d81b60;
+  }
+  
+  .footer {
+    background: #222;
+    color: #aaa;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  .footer .social-icons {
+    margin: 10px 0;
+  }
+  
+  .footer .social-icons a {
+    margin: 0 10px;
+    color: #aaa;
+    text-decoration: none;
+  }
+  
+  .footer .social-icons a:hover {
+    color: #ff6b6b;
+  }
+  

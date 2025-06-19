@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Bella",
+    "breed": "Labrador",
+    "image": "/images/bella.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Charlie",
+    "breed": "Beagle",
+    "image": "/images/charlie.jpg"
+  }
+]
