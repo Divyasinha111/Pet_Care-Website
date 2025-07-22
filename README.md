@@ -78,7 +78,6 @@ pawsitive-website/
 
 ### ▶️ Frontend Setup
 
-```bash
 # Navigate to the frontend directory
 cd pawsitive-website/frontend
 
