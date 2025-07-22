@@ -102,6 +102,7 @@ npm install
 node server.js
 
 📝 The backend will typically run at http://localhost:5000
+
 ---
 
 ## 🖼️ Image Gallery
