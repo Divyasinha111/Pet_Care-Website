@@ -63,6 +63,19 @@ In addition to adoption and services, our shop includes:
 
 ---
 
+## HOW TO RUN THIS
+# Frontend
+cd pawsitive-website
+cd frontend
+npm start
+
+# Backend
+cd pawsitive-website
+cd backend
+node server.js
+
+---
+
 ## 🖼️ Image Gallery
 ### Homepage Preview
 <img width="1897" height="858" alt="image" src="https://github.com/user-attachments/assets/e77a59b2-0893-4fc3-903a-4e8e98b02e73" />
