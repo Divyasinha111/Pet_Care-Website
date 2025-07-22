@@ -63,17 +63,46 @@ In addition to adoption and services, our shop includes:
 
 ---
 
-## HOW TO RUN THIS
-# Frontend
-cd pawsitive-website
-cd frontend
+## 🚀 How to Run This Project
+
+To run the Pawsitive web application locally, follow these steps:
+
+### 📁 Project Structure
+
+pawsitive-website/
+├── frontend/ # Frontend code (React/css)
+├── backend/ # Backend code (Node.js + Express + MongoDB)
+
+
+---
+
+### ▶️ Frontend Setup
+
+```bash
+# Navigate to the frontend directory
+cd pawsitive-website/frontend
+
+# Install dependencies (if not already installed)
+npm install
+
+# Start the frontend development server
 npm start
 
-# Backend
-cd pawsitive-website
-cd backend
+**📝 The frontend will typically run at http://localhost:3000**
+
+---
+⚙️ Backend Setup
+bash
+# Navigate to the backend directory
+cd pawsitive-website/backend
+
+# Install dependencies (if not already installed)
+npm install
+
+# Start the backend server
 node server.js
 
+📝 The backend will typically run at http://localhost:5000
 ---
 
 ## 🖼️ Image Gallery
