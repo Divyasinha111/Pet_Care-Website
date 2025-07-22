@@ -22,7 +22,7 @@ function ContactForm() {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function ContactForm() {
         setStatus('Something went wrong. Try again.');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Frontend error:', error);
       setStatus('Server error. Please try again later.');
     }
   };

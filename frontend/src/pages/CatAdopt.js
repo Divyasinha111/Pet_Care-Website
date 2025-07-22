@@ -83,9 +83,9 @@ const CatAdopt = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      {/* <footer className="footer">
         <p>Follow us: 📱 💌 💍</p>
-      </footer>
+      </footer> */}
     </div>
   );
 };

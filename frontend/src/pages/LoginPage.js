@@ -1,27 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState(localStorage.getItem('email') || '');
-  const [password, setPassword] = useState(localStorage.getItem('password') || '');
-  const [errors, setErrors] = useState({ email: '', password: '' });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({ email: "", password: "", login: "" });
 
   const validate = () => {
     let valid = true;
-    let newErrors = { email: '', password: '' };
+    let newErrors = { email: "", password: "", login: "" };
 
-    // Email format check
     if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
       valid = false;
     }
 
-    // Password length check
     if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
       valid = false;
     }
 
@@ -29,18 +27,39 @@ const LoginPage = () => {
     return valid;
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!validate()) return;
 
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-    navigate('/');
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Login failed");
+      }
+
+      // Save token and user info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("isLoggedIn", "true");  // <-- ADD THIS LINE
+
+      navigate("/homepage");
+    } catch (err) {
+      setErrors((prev) => ({ ...prev, login: err.message }));
+    }
   };
 
   const goToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
@@ -69,10 +88,12 @@ const LoginPage = () => {
           />
           {errors.password && <span className="error">{errors.password}</span>}
 
+          {errors.login && <span className="error">{errors.login}</span>}
+
           <button type="submit">Login</button>
 
           <p className="signup-link">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <span className="signup-click" onClick={goToRegister}>
               Sign up
             </span>

@@ -1,0 +1,15 @@
+/* src/pages/Logout.css */
+.logout-page {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #f7f7f7;
+}
+
+.logout-page h2 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.logout-page p {
+  color: #666;
+}

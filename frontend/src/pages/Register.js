@@ -1,42 +1,150 @@
-import React, { useState } from 'react';
-import './Register.css';
+// // ...existing code...
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import "./Register.css";
+
+// const Register = () => {
+//   const navigate = useNavigate();
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//     phone: "",
+//   });
+//   const [success, setSuccess] = useState(false);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   const [error, setError] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     // Check if user already exists
+//     const existingUser = JSON.parse(localStorage.getItem("registeredUser"));
+//     if (existingUser && existingUser.email === formData.email) {
+//       setError("Email already registered. Please use another email or login.");
+//       return;
+//     }
+//     // Save user data to localStorage
+//     localStorage.setItem("registeredUser", JSON.stringify(formData));
+//     setSuccess(true);
+//     setError("");
+//     setTimeout(() => {
+//       navigate("/login");
+//     }, 1500);
+//   };
+
+//   return (
+//     <div className="register-container">
+//       <form className="register-form" onSubmit={handleSubmit}>
+//         <h2>Register</h2>
+//         <input
+//           type="text"
+//           name="name"
+//           placeholder="Full Name"
+//           value={formData.name}
+//           onChange={handleChange}
+//           required
+//         />
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Email Address"
+//           value={formData.email}
+//           onChange={handleChange}
+//           required
+//         />
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Password"
+//           value={formData.password}
+//           onChange={handleChange}
+//           required
+//         />
+//         <input
+//           type="text"
+//           name="phone"
+//           placeholder="Phone Number"
+//           value={formData.phone}
+//           onChange={handleChange}
+//           required
+//         />
+//         <button type="submit">Submit</button>
+//         {error && (
+//           <p className="error-message" style={{ color: "red" }}>
+//             {error}
+//           </p>
+//         )}
+//         {success && (
+//           <p className="success-message">Registration Successful ✅</p>
+//         )}
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+
+
+
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
   });
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
-
-  // Handle form input changes
   const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Display form data in the console (normally you'd send this to an API)
-    console.log('Form submitted with data:', formData);
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Display success message
-    setSubmitted(true);
+      const data = await res.json();
 
-    // Optionally, clear the form after submission
-    setFormData({ name: '', email: '', password: '', phone: '' });
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setSuccess(true);
+      setError("");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
+        <h2>Register</h2>
         <input
           type="text"
           name="name"
@@ -45,7 +153,6 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-
         <input
           type="email"
           name="email"
@@ -54,7 +161,6 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-
         <input
           type="password"
           name="password"
@@ -63,20 +169,25 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-
         <input
-          type="tel"
+          type="text"
           name="phone"
           placeholder="Phone Number"
           value={formData.phone}
           onChange={handleChange}
           required
         />
-
         <button type="submit">Submit</button>
-      </form>
 
-      {submitted && <div className="submitted-msg">Registration Successful ✅</div>}
+        {error && (
+          <p className="error-message" style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
+        {success && (
+          <p className="success-message">Registration Successful ✅</p>
+        )}
+      </form>
     </div>
   );
 };
